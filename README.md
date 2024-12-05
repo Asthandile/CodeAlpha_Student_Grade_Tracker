@@ -11,4 +11,4 @@
 - _Programming Language_: Java
 - _Integrated Development Environment (IDE)_: Java (IntelliJ Community Edition)
 - _User Interface_: Swing (Java's GUI toolkit)
-- _Data Storage_: Arrays (built-in Java data structure)
+- _Data Storage_: Arrays (built-in Java data structure
