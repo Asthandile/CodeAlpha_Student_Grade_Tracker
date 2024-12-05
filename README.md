@@ -7,3 +7,8 @@
 - *Lowest Score Identification*: Identifies the lowest score achieved by each student
 - *User-Friendly Interface*: Features a simple and intuitive interface for easy navigation and interaction
 - *Data Storage*: Utilizes arrays to store student data, providing a efficient and organized solution for tracking student grades
+#Technology used
+- _Programming Language_: Java
+- _Integrated Development Environment (IDE)_: Java (IntelliJ Community Edition)
+- _User Interface_: Swing (Java's GUI toolkit)
+- _Data Storage_: Arrays (built-in Java data structure)
