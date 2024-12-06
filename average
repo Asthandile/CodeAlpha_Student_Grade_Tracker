@@ -1,0 +1,8 @@
+ public static double Calcuteaverage(ArrayList<Double>grades){
+        double sum =0.0;
+        for (double grade:grades){
+            sum+=grade;
+
+        }
+        return sum/ grades.size();
+    }
