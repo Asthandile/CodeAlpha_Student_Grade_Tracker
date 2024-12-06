@@ -1,0 +1,9 @@
+ public static double findlowest(ArrayList<Double>grades){
+        double Lowest=grades.get(0);
+        for (double grade:grades){
+            if (grade<Lowest){
+                Lowest=grade;
+            }
+        }
+     return  Lowest;
+  }
