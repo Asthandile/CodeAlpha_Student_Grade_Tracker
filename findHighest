@@ -1,0 +1,10 @@
+public static double findhighest(ArrayList<Double>grades){
+        double Highest=grades.get(0);
+        for (double grade: grades){
+         if (grade>Highest) {
+          Highest=grade;
+         }
+
+        }
+       return Highest;
+  }
