@@ -1,0 +1,119 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+public class systemtracker extends JFrame {
+    private JTextField  count,stud;
+    private JTextArea gradeinputarea;
+    private JLabel average,highest,lowest;
+    private JButton calculate,exit;
+    private ArrayList<Double>grades;
+    private  JPanel inputPanel,midPanel,butPanel;
+public void Drawapp() {
+
+        //initialize components
+
+        grades = new ArrayList<>();
+        count = new JTextField(2);
+
+        gradeinputarea = new JTextArea(5, 5);
+        average = new JLabel("Average");
+        highest = new JLabel("Highest Score");
+        lowest = new JLabel("Lowst Score");
+        calculate = new JButton("Calculate");
+        exit = new JButton("Exit") ;
+
+        //layout setup
+
+        JPanel inputPanel=new JPanel(new GridLayout(2,2,5,5));
+public void Drawapp() {
+
+        //initialize components
+
+        grades = new ArrayList<>();
+        count = new JTextField(2);
+
+        gradeinputarea = new JTextArea(5, 5);
+        average = new JLabel("Average");
+        highest = new JLabel("Highest Score");
+        lowest = new JLabel("Lowst Score");
+        calculate = new JButton("Calculate");
+        exit = new JButton("Exit") ;
+
+        //layout setup
+
+        JPanel inputPanel=new JPanel(new GridLayout(2,2,5,5));
+ inputPanel.setBorder(BorderFactory.createTitledBorder("Enter Details"));
+        inputPanel.add(new JLabel("number of students"));
+        inputPanel.add(count);
+        inputPanel.add(new JLabel("Eter mark(one per line)"));
+        inputPanel.add(new JScrollPane(gradeinputarea));
+
+        JPanel midPanel=new JPanel(new GridLayout(3,2,5,5));
+        midPanel.setBorder(BorderFactory.createTitledBorder("RESULTS"));
+        midPanel.add(average);
+        midPanel.add(highest);
+        midPanel.add(lowest);
+
+        JPanel butPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
+        butPanel.add(calculate);
+        calculate.addActionListener(new Calculate());
+        butPanel.add(exit);
+        exit.addActionListener(new Exit());
+         //add panels to the frame
+
+        add(inputPanel,BorderLayout.NORTH);
+        add(butPanel,BorderLayout.CENTER);
+        add(midPanel,BorderLayout.EAST);
+
+
+        setTitle("Student Grade Tracker");
+        setSize(600, 300);
+        setLocation(300, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+    }
+    //action listener for the calculate button
+    public class Calculate implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e){
+            processGrade();
+        }
+          }
+    //action listener for the exit button
+    public class Exit implements ActionListener{
+        @Override
+        public  void actionPerformed(ActionEvent e){
+            System.exit(0);
+        }
+    }
+ private void processGrade(){
+        try{
+        int numbofstudents=Integer.parseInt(count.getText());
+        grades.clear();
+        String [] gradeLines=gradeinputarea.getText().split("\\n");
+        if (gradeLines.length !=numbofstudents){
+           JOptionPane.showMessageDialog(this,"number of grades does not match the number of students");
+           return;
+            }
+        for (String gradeLine: gradeLines){
+            grades.add(Double.parseDouble(gradeLine.trim()));
+
+        }
+        // calculate Average,Highest,Lowest
+        double Average=Calcuteaverage(grades);
+        double Highest=findhighest(grades);
+        double Lowest= findlowest(grades);
+
+        //display results besides the calculate button
+        average.setText("Average:"+ Average);
+        highest.setText("Highest Mark:"+ Highest);
+        lowest.setText("Lowest Mark:"+ Lowest);
+          }catch(NumberFormatException ex){
+         JOptionPane.showMessageDialog(this,"please enter valid number for student count and grades");
+
+        }
+    }
